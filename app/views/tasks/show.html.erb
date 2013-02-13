@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @task.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @task.description %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @task.date %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @task.status %>
+</p>
+
+<p>
+  <b>Public:</b>
+  <%= @task.public %>
+</p>
+
+<p>
+  <b>Autolock:</b>
+  <%= @task.autolock %>
+</p>
+
+<p>
+  <b>Hascomment:</b>
+  <%= @task.hasComment %>
+</p>
+
+<p>
+  <b>Hasarchives:</b>
+  <%= @task.hasArchives %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

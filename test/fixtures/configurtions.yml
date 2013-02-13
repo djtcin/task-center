@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rememberDefault: 2013-02-12 22:21:16
+  emailNewTask: false
+  emailChangeTask: false
+  emailNewGrade: false
+  studentId: 1
+
+two:
+  rememberDefault: 2013-02-12 22:21:16
+  emailNewTask: false
+  emailChangeTask: false
+  emailNewGrade: false
+  studentId: 1

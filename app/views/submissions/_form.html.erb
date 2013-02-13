@@ -1,0 +1,49 @@
+<%= form_for(@submission) do |f| %>
+  <% if @submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+
+      <ul>
+      <% @submission.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lastUpdate %><br />
+    <%= f.datetime_select :lastUpdate %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :grade %><br />
+    <%= f.text_field :grade %>
+  </div>
+  <div class="field">
+    <%= f.label :submitted %><br />
+    <%= f.check_box :submitted %>
+  </div>
+  <div class="field">
+    <%= f.label :studentId %><br />
+    <%= f.number_field :studentId %>
+  </div>
+  <div class="field">
+    <%= f.label :remember %><br />
+    <%= f.datetime_select :remember %>
+  </div>
+  <div class="field">
+    <%= f.label :viewed %><br />
+    <%= f.check_box :viewed %>
+  </div>
+  <div class="field">
+    <%= f.label :task %><br />
+    <%= f.text_field :task %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
