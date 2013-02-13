@@ -1,4 +1,4 @@
 task-center
 ===========
 
-Tasks sontroller and files submission.
+Tasks controller and files submission.
