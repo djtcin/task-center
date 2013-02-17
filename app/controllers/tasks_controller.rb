@@ -9,6 +9,19 @@ class TasksController < ApplicationController
       format.json { render json: @tasks }
     end
   end
+  
+  # GET /tasks
+  # GET /tasks.json
+  def pending
+      logger.info("AT: TASKS PENDING") # TODO  apagar teste
+     @tasks = Task.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tasks }
+    end
+    redirect_to tasks_path
+  end
 
   # GET /tasks/1
   # GET /tasks/1.json

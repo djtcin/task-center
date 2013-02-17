@@ -56,7 +56,16 @@ Taskcenter::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+
+
+match '/auth/:provider/callback', :to => 'session#create'
+match '/auth/:provider', :to => 'session#create', as: :create_session
+match 'pending' => "tasks#pending"
+root :to => 'session#create'
+
+#root :to => 'home#index'
+#tasks :to => 'tasks#index'
+
 
   # See how all your routes lay out with "rake routes"
 

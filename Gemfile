@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
+#gem 'omniauth-redu', git: 'git://github.com/redu/omniauth-redu.git'
+gem 'omniauth-redu', git: 'https://github.com/redu/omniauth-redu.git'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

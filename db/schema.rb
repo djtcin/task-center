@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212230532) do
+ActiveRecord::Schema.define(:version => 20130217034521) do
 
   create_table "archives", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(:version => 20130212230532) do
     t.integer  "size"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "configurations", :force => true do |t|
+    t.integer  "studentId"
+    t.datetime "rememberDefault"
+    t.boolean  "emailNewTask"
+    t.boolean  "emailChangeTask"
+    t.boolean  "emailNewGrade"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "submissions", :force => true do |t|
@@ -47,6 +57,18 @@ ActiveRecord::Schema.define(:version => 20130212230532) do
     t.integer  "hasArchives"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "login"
+    t.integer  "redu_id"
+    t.string   "pic"
+    t.string   "token"
+    t.boolean  "student"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
