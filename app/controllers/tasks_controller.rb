@@ -17,10 +17,10 @@ class TasksController < ApplicationController
      @tasks = Task.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # pending.html.erb
       format.json { render json: @tasks }
     end
-    redirect_to tasks_path
+
   end
 
   # GET /tasks/1

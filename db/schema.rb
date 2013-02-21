@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217034521) do
+ActiveRecord::Schema.define(:version => 20130217201139) do
 
   create_table "archives", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(:version => 20130217034521) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "spaces", :primary_key => "redu_id", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "submissions", :force => true do |t|
     t.datetime "lastUpdate"
     t.text     "comment"
@@ -40,11 +45,10 @@ ActiveRecord::Schema.define(:version => 20130217034521) do
     t.datetime "remember"
     t.boolean  "viewed"
     t.integer  "task_id"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "submissions", ["task_id"], :name => "index_submissions_on_task_id"
 
   create_table "tasks", :force => true do |t|
     t.string   "title"
@@ -55,20 +59,26 @@ ActiveRecord::Schema.define(:version => 20130217034521) do
     t.boolean  "autolock"
     t.integer  "hasComment"
     t.integer  "hasArchives"
+    t.integer  "space_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "users", :force => true do |t|
+  add_index "tasks", ["space_id"], :name => "index_tasks_on_space_id"
+
+  create_table "users", :primary_key => "redu_id", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "login"
-    t.integer  "redu_id"
     t.string   "pic"
     t.string   "token"
     t.boolean  "student"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "rememberDefault"
+    t.boolean  "emailNewTask"
+    t.boolean  "emailChangeTask"
+    t.boolean  "emailNewGrade"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

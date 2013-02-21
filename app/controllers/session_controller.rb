@@ -30,8 +30,8 @@ class SessionController < ApplicationController
     
     
     #redirect_to root_path    
+    #redirect_to :controller => "tasks", :action => "pending"
     redirect_to :controller => "tasks", :action => "pending"
-
   end
 
   protected

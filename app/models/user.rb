@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :login, :name, :pic, :redu_id, :token, :student
+  attr_accessible :email, :login, :name, :pic, :redu_id, :token, :student, :emailChangeTask, :emailNewGrade, :emailNewTask, :rememberDefault
   validates :redu_id, :presence => true
   validates_uniqueness_of :redu_id, :message => "este usuario ja foi adicionado"
   
