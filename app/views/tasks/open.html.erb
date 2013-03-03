@@ -1,7 +1,4 @@
-<% content_for :head do %>
-  <h1>Pending tasks</h1>
-<% end %>
-
+<h1>Open tasks</h1>
 
 <table>
   <tr>
@@ -37,6 +34,4 @@
 
 <br />
 
-<% content_for :buttons do %>
-  <%= link_to 'New Task', new_task_path %>
-<% end %>
+<%= link_to 'New Task', new_task_path %>

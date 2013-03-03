@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  lastUpdate: 2013-02-12 20:05:32
-  comment: MyText
+  comment: MyString
   grade: 9.99
+  lastupdate: 2013-02-21 01:24:10
+  remember: 2013-02-21 01:24:10
   submitted: false
-  studentId: 1
-  remember: 2013-02-12 20:05:32
   viewed: false
   task: 
+  user: 
 
 two:
-  lastUpdate: 2013-02-12 20:05:32
-  comment: MyText
+  comment: MyString
   grade: 9.99
+  lastupdate: 2013-02-21 01:24:10
+  remember: 2013-02-21 01:24:10
   submitted: false
-  studentId: 1
-  remember: 2013-02-12 20:05:32
   viewed: false
   task: 
+  user: 

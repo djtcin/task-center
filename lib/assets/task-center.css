@@ -1,0 +1,3 @@
+body { width: 710px; background-color: #ff0;}
+#headBar, #container, #buttonsBar { display: block; background-color: #f0f;}
+#headBar, #container { margin-bottom: 15px; background-color: #0f0;}

@@ -1,12 +1,11 @@
 class CreateSubmissions < ActiveRecord::Migration
-  def up
+  def change
     create_table :submissions do |t|
-      t.datetime :lastUpdate
-      t.text :comment
+      t.string :comment
       t.decimal :grade
-      t.boolean :submitted
-      t.integer :studentId
+      t.datetime :lastupdate
       t.datetime :remember
+      t.boolean :submitted
       t.boolean :viewed
       t.references :task
       t.references :user
@@ -15,10 +14,5 @@ class CreateSubmissions < ActiveRecord::Migration
     end
     add_index :submissions, :task_id
     add_index :submissions, :user_id
-  end
-  
-  def down
-    drop_table :submissions
-    drop_table :configurations
   end
 end

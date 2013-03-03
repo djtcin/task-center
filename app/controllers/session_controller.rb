@@ -21,6 +21,7 @@ class SessionController < ApplicationController
 
     @user = User.find_by_redu_id(auth_hash_temp[:redu_id]) || 
             User.create_with_omniauth(auth_hash_temp)  # TODO substituir pelo auth certo
+   
     
     session[:user_id] = @user.redu_id
     logger.info("USER ID2: #{session[:user_id]}") # TODO apagar teste
@@ -28,10 +29,10 @@ class SessionController < ApplicationController
     session[:space_id] = params[:redu_space_id]
     logger.info("SPACE ID: #{session[:space_id]}") # TODO apagar teste
     
-    
+    redirect_to '/pending'
     #redirect_to root_path    
     #redirect_to :controller => "tasks", :action => "pending"
-    redirect_to :controller => "tasks", :action => "pending"
+    #redirect_to :controller => "tasks", :action => "pending"
   end
 
   protected

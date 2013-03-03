@@ -12,28 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :lastUpdate %><br />
-    <%= f.datetime_select :lastUpdate %>
-  </div>
-  <div class="field">
     <%= f.label :comment %><br />
-    <%= f.text_area :comment %>
+    <%= f.text_field :comment %>
   </div>
   <div class="field">
     <%= f.label :grade %><br />
     <%= f.text_field :grade %>
   </div>
   <div class="field">
-    <%= f.label :submitted %><br />
-    <%= f.check_box :submitted %>
-  </div>
-  <div class="field">
-    <%= f.label :studentId %><br />
-    <%= f.number_field :studentId %>
+    <%= f.label :lastupdate %><br />
+    <%= f.datetime_select :lastupdate %>
   </div>
   <div class="field">
     <%= f.label :remember %><br />
     <%= f.datetime_select :remember %>
+  </div>
+  <div class="field">
+    <%= f.label :submitted %><br />
+    <%= f.check_box :submitted %>
   </div>
   <div class="field">
     <%= f.label :viewed %><br />
@@ -42,6 +38,10 @@
   <div class="field">
     <%= f.label :task %><br />
     <%= f.text_field :task %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
   </div>
   <div class="actions">
     <%= f.submit %>

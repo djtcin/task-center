@@ -22,10 +22,37 @@ class TasksController < ApplicationController
     end
 
   end
+  
+    # GET /tasks
+  # GET /tasks.json
+  def open
+      logger.info("AT: TASKS OPEN") # TODO  apagar teste
+     @tasks = Task.all
+
+    respond_to do |format|
+      format.html # pending.html.erb
+      format.json { render json: @tasks }
+    end
+
+  end
+  
+    # GET /tasks
+  # GET /tasks.json
+  def close
+      logger.info("AT: TASKS CLOSE") # TODO  apagar teste
+     @tasks = Task.all
+
+    respond_to do |format|
+      format.html # pending.html.erb
+      format.json { render json: @tasks }
+    end
+
+  end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    logger.info("AT: TASKS SHOW") # TODO  apagar teste
     @task = Task.find(params[:id])
 
     respond_to do |format|

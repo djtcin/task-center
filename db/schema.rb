@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217201139) do
+ActiveRecord::Schema.define(:version => 20130221042410) do
 
   create_table "archives", :force => true do |t|
     t.string   "name"
@@ -21,34 +21,26 @@ ActiveRecord::Schema.define(:version => 20130217201139) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "configurations", :force => true do |t|
-    t.integer  "studentId"
-    t.datetime "rememberDefault"
-    t.boolean  "emailNewTask"
-    t.boolean  "emailChangeTask"
-    t.boolean  "emailNewGrade"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
   create_table "spaces", :primary_key => "redu_id", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "submissions", :force => true do |t|
-    t.datetime "lastUpdate"
-    t.text     "comment"
+    t.string   "comment"
     t.decimal  "grade"
-    t.boolean  "submitted"
-    t.integer  "studentId"
+    t.datetime "lastupdate"
     t.datetime "remember"
+    t.boolean  "submitted"
     t.boolean  "viewed"
     t.integer  "task_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "submissions", ["task_id"], :name => "index_submissions_on_task_id"
+  add_index "submissions", ["user_id"], :name => "index_submissions_on_user_id"
 
   create_table "tasks", :force => true do |t|
     t.string   "title"

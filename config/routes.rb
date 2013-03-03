@@ -1,7 +1,6 @@
 Taskcenter::Application.routes.draw do
+
   resources :submissions
-
-
   resources :tasks
 
 
@@ -61,6 +60,10 @@ Taskcenter::Application.routes.draw do
 match '/auth/:provider/callback', :to => 'session#create'
 match '/auth/:provider', :to => 'session#create', as: :create_session
 
+match 'pending' => 'tasks#pending'
+match 'close' => 'tasks#close'
+match 'open' => 'tasks#open'
+match '/tasks/pending/' => 'tasks#pending'
 
 root :to => 'session#create'
 
@@ -71,7 +74,7 @@ root :to => 'session#create'
 #match '/tasks' => "tasks#pending"
 #resouces :tasks, only: :show
 #pending_tasks_url '/tasks/pending', :controller => 'users', :action => 'pending', :method => :get
-match "/tasks/pending" => "tasks#pending"
+
 
   # See how all your routes lay out with "rake routes"
 
