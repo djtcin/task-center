@@ -13,8 +13,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def pending
-      logger.info("AT: TASKS PENDING") # TODO  apagar teste
-     @tasks = Task.all
+     @tasks = Task.all_pending(session[:space_id])
 
     respond_to do |format|
       format.html # pending.html.erb
@@ -27,7 +26,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def open
       logger.info("AT: TASKS OPEN") # TODO  apagar teste
-     @tasks = Task.all
+     @tasks = Task.all_open(session[:space_id])
 
     respond_to do |format|
       format.html # pending.html.erb
@@ -40,7 +39,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def close
       logger.info("AT: TASKS CLOSE") # TODO  apagar teste
-     @tasks = Task.all
+     @tasks = Task.all_close(session[:space_id])
 
     respond_to do |format|
       format.html # pending.html.erb
@@ -80,7 +79,9 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(params[:task])
+    @space = Space.find(session[:space_id])
+    #@task = Task.new(params[:task])
+    @task = @space.tasks.create(params[:task])
 
     respond_to do |format|
       if @task.save
@@ -92,7 +93,8 @@ class TasksController < ApplicationController
       end
     end
   end
-
+  
+ 
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update

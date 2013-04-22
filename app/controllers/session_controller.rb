@@ -6,7 +6,7 @@ class SessionController < ApplicationController
     
     # TODO  fazer auth_hash funcionar para saber o tipo de usuário  
     auth_hash_temp = { :redu_id  => params[:redu_user_id].to_i, :credentials => { :token => "token"} , :info => { :name => "Denise_#{params[:redu_user_id]}", :login => "djtcin", :email => "d@d" , :pic => "", :student => true } }
-    
+    auth_hash_space = { :redu_id  => params[:redu_space_id]}
     # TODO  ou fazer isso funcionar para saber o tipo de usuário 
     #logger.info("AUTH: "+auth_hash)
     #conn = Faraday.new(:url => 'http://redu.com.br') do |faraday|
@@ -21,12 +21,14 @@ class SessionController < ApplicationController
 
     @user = User.find_by_redu_id(auth_hash_temp[:redu_id]) || 
             User.create_with_omniauth(auth_hash_temp)  # TODO substituir pelo auth certo
+            
+    @space = Space.find_by_redu_id(auth_hash_space[:redu_id]) || 
+            Space.create_with_omniauth(auth_hash_space)
    
-    
     session[:user_id] = @user.redu_id
     logger.info("USER ID2: #{session[:user_id]}") # TODO apagar teste
     session[:user_student] = @user.student;
-    session[:space_id] = params[:redu_space_id]
+    session[:space_id] = @space.redu_id
     logger.info("SPACE ID: #{session[:space_id]}") # TODO apagar teste
     
     redirect_to '/pending'

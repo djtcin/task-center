@@ -1,0 +1,23 @@
+
+<div style="height: 40px; width: 100%">
+	<% if selected == "pending"%>
+		<span style="float: left;">Pendentes</span>
+	<% else %>
+		<%= button_to 'Pendenter', 'pending', {:style => "float: left;" } %>
+	<% end %>
+	
+	<% if selected == "open"%>
+		<span style="float: left;">Abertos</span>
+	<% else %>
+		<%= button_to 'Abertos', 'open', {:style => "float: left;" } %>
+	<% end %>
+	
+	<% if selected == "close"%>
+		<span style="float: left;">Fechados</span>
+	<% else %>
+		<%= button_to 'Fechados', 'close', {:style => "float: left;" } %>
+	<% end %>
+	
+	
+	<input type="button" value="Configuração" style="float: right;"/>
+</div>

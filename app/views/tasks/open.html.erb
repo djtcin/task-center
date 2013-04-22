@@ -1,4 +1,8 @@
-<h1>Open tasks</h1>
+
+<% content_for :head do %>
+  <%= render :partial => "shared/mainHeaderStudent", :locals => { :selected => "open" } %>
+<% end %>
+
 
 <table>
   <tr>
@@ -34,4 +38,6 @@
 
 <br />
 
-<%= link_to 'New Task', new_task_path %>
+<% content_for :buttons do %>
+  <%= link_to 'New Task', new_task_path %>
+<% end %>
