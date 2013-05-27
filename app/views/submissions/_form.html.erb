@@ -1,49 +1,37 @@
-<%= form_for(@submission) do |f| %>
-  <% if @submission.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
-
-      <ul>
-      <% @submission.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :comment %><br />
-    <%= f.text_field :comment %>
-  </div>
-  <div class="field">
-    <%= f.label :grade %><br />
-    <%= f.text_field :grade %>
-  </div>
-  <div class="field">
-    <%= f.label :lastupdate %><br />
-    <%= f.datetime_select :lastupdate %>
-  </div>
-  <div class="field">
-    <%= f.label :remember %><br />
-    <%= f.datetime_select :remember %>
-  </div>
-  <div class="field">
-    <%= f.label :submitted %><br />
-    <%= f.check_box :submitted %>
-  </div>
-  <div class="field">
-    <%= f.label :viewed %><br />
-    <%= f.check_box :viewed %>
-  </div>
-  <div class="field">
-    <%= f.label :task %><br />
-    <%= f.text_field :task %>
-  </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<span class="debug-span">submissions/_form.html.erb</span>
+<% content_for :head do %>
+ 	<div class="gradient-bar line-bar center-text relative">
+	
+		<span class="title"><%= @task.title %></span>
+		<div class="absolute second-title right">
+			
+			<% if (true) %>
+				Pendente
+			<% else %>
+				Entregue
+			<% end %>
+		</div>
+	</div>
 <% end %>
+	
+	<div class="line-bar">
+		<img src="calendar.png" width="17" height="17"/>
+		Até <% @task.date %>
+		
+		<span class="second-title right-align">
+			<% if (@task.public == false)%>
+				Não Público
+			<% else %>
+				<a><img src="alunos.png" width="17" height="17"/> Ver entregas dos alunos ></a>
+			<% end %>
+		</span>
+	</div>
+	<div class="clear"></div>
+
+
+
+<%= form_for (@task) do |f| %>
+
+
+<% end %>
+

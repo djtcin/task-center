@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Taskcenter</title>
+   <link href="bootstrap-redu_old.css" media="all" rel="stylesheet" type="text/css" />
+   <link href="style.css" media="all" rel="stylesheet" type="text/css" />
+   
+</head>
+<body>
+<div id="mainContainer">
+	<div id="headTaskBar" class="line-bar">
+		<div class="gradient-bar line-bar center-text relative">
+			<span class="title">Configuracao</span>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container line-bar" class="clear">
+		
+		<div class="line-bar">
+		Enfiar e-mail de lembrete com <input type="text"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="small center-text"> dias de antecedência.
+		</div>
+		<div class="line-bar">
+		Enviar e-mail para as seguintes ações:
+		<ul class="selects">
+			<li><input type="checkbox" name="novaAtividade" value="novaAtividade">&nbsp;Nova atividade</li>
+			<li><input type="checkbox" name="atividadeAlterada" value="atividadeAlterada">&nbsp;Atividade alterada</li>
+			<li><input type="checkbox" name="notasEntregues" value="notasEntregues">&nbsp;Notas entregues</li>
+		</ul>
+
+
+		</div>
+
+		<br />
+	</div>
+	<div id="buttonsBar line-bar">
+		<a class="cssgradients button-default">Cancelar</a>
+		<a class="cssgradients button-default">Salvar</a>
+	</div>
+	
+	<span id="versionTaskCenter">TC 1.0 Aluno</span>
+</div>
+</body>
+</html>

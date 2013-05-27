@@ -1,5 +1,13 @@
-<h1>New task</h1>
+<span class="debug-span">tasks/new.html.erb</span>
+<br /><% content_for :head do %>
+	<div class="gradient-bar line-bar center-text relative">
+		<span class="title">Criar nova atividade</span>
+	</div>
+	<div class="clear"></div>
+<% end %>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', tasks_path %>
+<% content_for :buttons do %>
+<br>
+<% end %>

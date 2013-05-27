@@ -4,25 +4,21 @@ class Task < ActiveRecord::Base
   has_many :submissions
   
   def self.all_open(spaceId)
-    
     Task.find(:all, :conditions => {:status => true, 'space_id' => spaceId})
-    
-    #Task.where("status = true AND space_id = ?", spaceId)
-  #  User.joins(:notifications)
-  #      .joins("LEFT JOIN `company_users` ON `company_users`.`user_id` = `users`.`id`")
-  #      .joins(:role_users)
-  #      .where("notifications.id = ? AND role_users.role_id != '1' AND (company_users.company_id = ? OR users.company_id = ?)", notification.id, p.company_id, p.company_id)
-    #all :conditions => {:status => true}
-    # values = Task.find :all, :order => 'id DESC',
-    #:conditions => 'status = "true"'
   end
   
   def self.all_close(spaceId)
-    Task.find(:all, :conditions => {:status => false, 'space_id' => spaceId})
+    Task.joins(:submissions).find(:all, :conditions => {:status => false, 'space_id' => spaceId})
   end
   
-  def self.all_pending(spaceId)
-    Task.find(:all, :conditions => {'space_id' => spaceId})
+  def self.all_pending(spaceId, userId)
+    Task
+    .joins("LEFT OUTER JOIN submissions ON submissions.task_id = tasks.id")
+    .where("tasks.space_id = ? 
+          AND tasks.status = ? 
+          AND (submissions.user_id != ? 
+              OR submissions.id IS NULL
+              OR (submissions.user_id = ? AND submissions.submitted = ?))", spaceId, true, userId, userId, false)
   end
 
 end

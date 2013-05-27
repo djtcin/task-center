@@ -1,4 +1,29 @@
 class SubmissionsController < ApplicationController
+  
+  def submit
+   
+   auth_sub = { :task_id  => params[:id], :user_id  => session[:user_id] } 
+   
+   @submission = Submission.find(:all, :conditions => {:user_id => session[:user_id], :task_id => params[:id]})
+   
+   if(@submission.empty?) then 
+       @submission = Submission.create_blank(auth_sub)
+   end
+   
+   if(!@submission) then
+      @submission  =  Submission.create_blank(auth_sub)
+   end
+   
+    @task = Task.find(params[:id]); 
+    
+    respond_to do |format|
+      format.html # submit.html.erb
+      format.json { render :json => { :submission => @submission, :task => @task } }
+      #{ render json: @submission }
+    end
+  end
+  
+  
   # GET /submissions
   # GET /submissions.json
   def index
@@ -60,10 +85,10 @@ class SubmissionsController < ApplicationController
 
     respond_to do |format|
       if @submission.update_attributes(params[:submission])
-        format.html { redirect_to @submission, notice: 'Submission was successfully updated.' }
+        format.html { redirect_to opened_tasks_url }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "submit" }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
       end
     end

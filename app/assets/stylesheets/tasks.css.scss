@@ -1,3 +1,286 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+	color: #aaaaaa;
+
+}
+
+a{
+	cursor: pointer;
+}
+
+li{
+	list-style: none;
+}
+
+#mainContainer{
+	width: 720px;
+	position: relative;
+}
+
+#versionTaskCenter{
+	position: absolute;
+	right: 5px;
+	bottom: 0px;
+}
+
+#buttonsBar{
+	margin-top: 10px;
+}
+
+#headTaskBar{
+	display: block;
+	width: 100%;
+	margin: 15px 0 15px 0;
+	
+}
+
+#headBar{
+	display: block;
+	width: 100%;
+	padding: 15px;
+}
+
+#headTaskBarTitle{
+	line-height: center;
+	height: 40px;
+}
+
+.header-left-buttons{
+	float: left;
+	display: block;
+	position: relative;
+}
+
+.header-center-buttons{
+	position: relative;
+	left: 190px;
+}
+
+.header-center-buttons a{
+	margin-left: 5px;
+}
+
+.header-center-buttons a, .relative{
+	position: relative;
+}
+
+.absolute{
+	position: absolute;
+}
+
+.header-right-buttons{
+	float: right;
+	display: block;
+	position: relative;
+	top: -20px;
+	right: 25px;
+}
+
+#table-tasks .small-col{
+	width: 100px;
+}
+
+#table-tasks .mini-col{
+	width: 13px;
+	padding: 5px 0 5px 10px;
+}
+
+div.task-label{
+	width: 13px;
+	height: 20px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+div.task-label.pendding{
+	background-color: #E46C0A;
+}
+
+div.task-label.open{
+	background-color: #77933C;
+}
+
+div.task-label.close{
+	background-color: #376092;
+}
+
+.button-default.active{
+	background-color: #4dadd6;
+	color: #ffffff;
+}
+
+.count-task{
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background-color: #CF5C3D;
+	position: absolute;
+	padding: 3px;
+	color: #fff;
+}
+
+#headBar .count-task{
+	right: -5px;
+	top: -13px;
+}
+
+#table-tasks td{
+	cursor: pointer;
+}
+
+.gradient-bar{
+	background: -moz-linear-gradient(top,#fff 0,#f0f0f0 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#fff),color-stop(100%,#f0f0f0));
+	background: -webkit-linear-gradient(top,#fff 0,#f0f0f0 100%);
+	background: -o-linear-gradient(top,#fff 0,#f0f0f0 100%);
+	background: -ms-linear-gradient(top,#fff 0,#f0f0f0 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#f0f0f0',GradientType=0);
+	background: linear-gradient(top,#fff 0,#f0f0f0 100%);
+	padding: 10px;
+	clear: all;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.line-bar{
+	margin: 10px 0 10px 0;
+	display: block;
+}
+
+.center-text{
+	text-align: center;
+}
+
+.title{
+	color: #158ac4;
+	font-weight: bold;
+}
+
+.second-title{
+	color: #b3b3b3;
+}
+
+#headTaskBar .second-title.right{
+	right: 10px;
+	top: 10px;
+}
+
+#headTaskBar .second-title.left{
+	left: 5px;
+	top: 3px;
+}
+
+.files-list li:hover{
+	background-color: #DCE6F2;
+}
+
+.files-list li span{
+	display: none;
+}
+
+.files-list li img{
+	padding-bottom: 9px;
+	margin-left: 5px;
+	display: none;
+}
+
+.files-list li:hover img , .files-list li:hover span{
+	display: block;
+}
+
+.right-float{
+	float: right;
+}
+
+.left-float{
+	float: left;
+}
+
+.clear{
+	clear: both;
+}
+
+.right-align{
+	float: right;
+}
+
+.list-submissions li, .list-students li{
+	padding: 10px;
+	position: relative;
+}
+
+.list-submissions .even, .list-students .even{
+	background-color: #F7F7F7;
+}
+
+.list-submissions .separator, .list-students .separator{
+	margin: 1px;
+}
+
+.list-submissions .left-col{
+	display: block;
+	width: 45px;
+	float: left;
+}
+
+.list-submissions .right-col{
+	display: block;
+	margin-left: 50px;
+	position: relative;
+}
+
+.list-submissions .download{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.list-students li{
+	width: 160px;
+	float: left;
+}
+
+.list-students .count-task{
+	left: 37px;
+	top: -10px;
+}
+
+input[type="text"].small{
+	width: 60px;
+	height: 30px;
+}
+
+.selects{
+	margin: 5 px;
+}
+
+.selects li{
+	margin: 5px 5px 5px 10px;
+}
+
+.center-text{
+	text-align: center;
+}
+
+
+.files-list li{
+	margin: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 5px 10px 5px 5px;
+	
+}
+
+.invisible{
+	display: none;
+}
+
+.cursor{
+	cursor: pointer;
+}
+

@@ -2,13 +2,20 @@
 <html>
 <head>
   <title>Taskcenter</title>
-  <%= stylesheet_link_tag "task-center", "bootstrap-redu" %>
+  
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "task-center" %>
+  
 </head>
 <body>
-	<div id="headBar"><%= yield :head %></div>
-	<div id="container"><%= yield %></div>
-	<div id="buttonsBar"><%= yield :buttons %></div>
+	<div id="mainContainer">
+		<span class="debug-span">layouts/application.html.erb</span>
+		<div id="headTaskBar" class="line-bar"><%= yield :head %></div>
+		<div id="container" class="line-bar"><%= yield %></div>
+		<div id="buttonsBar line-bar"><%= yield :buttons %></div>
+		<span id="versionTaskCenter"><%= yield :version %></span>
+	</div>
+	
 </body>
 </html>

@@ -60,10 +60,23 @@ Taskcenter::Application.routes.draw do
 match '/auth/:provider/callback', :to => 'session#create'
 match '/auth/:provider', :to => 'session#create', as: :create_session
 
-match 'pending' => 'tasks#pending'
-match 'close' => 'tasks#close'
-match 'open' => 'tasks#open'
-match '/tasks/pending/' => 'tasks#pending'
+match 'pending' => 'tasks#pending', :as => :pendding_tasks
+match 'close' => 'tasks#close', :as => :closed_tasks
+match 'open' => 'tasks#open', :as => :opened_tasks
+#match '/tasks/pending/' => 'tasks#pending'
+match 'error' => 'tasks#open'
+match 'new' => 'tasks#new'
+match 'show' => 'task#show', :as => :show_task
+ # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
+#match 'submission/:id' => 'submissions#viewstudent'
+
+  # Sample of named route:
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
+match 'submission/:id/submit' => 'submissions#submit', :as => :submit_submission
+
 
 root :to => 'session#create'
 

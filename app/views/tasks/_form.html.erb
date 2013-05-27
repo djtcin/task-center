@@ -1,5 +1,5 @@
-
-<%= form_for(@task) do |f| %>
+<span class="debug-span">tasks/_form.html.erb</span>
+<%= form_for (@task) do |f| %>
 
 
   <% if @task.errors.any? %>
@@ -14,38 +14,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
+  <div class="line-bar">
+    T&iacute;tulo<br />
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+  
+  <div class="line-bar">
+    Descrição:<br />
+    <%= f.text_field :description %>
   </div>
-  <div class="field">
-    <%= f.label :date %><br />
+  
+  <div class="line-bar campos-data">
+    Data de entrega:<br />
     <%= f.datetime_select :date %>
   </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.check_box :status %>
+
+ <div class="line-bar">
+    <%= f.check_box :status %> Ativo
   </div>
-  <div class="field">
-    <%= f.label :public %><br />
-    <%= f.check_box :public %>
+  
+  <div class="line-bar">
+    <%= f.check_box :public %> Público (submissões abertas para os alunos)
   </div>
-  <div class="field">
-    <%= f.label :autolock %><br />
-    <%= f.check_box :autolock %>
+  
+  <div class="line-bar">
+    <%= f.check_box :autolock %> Bloquear automaticamente após a data limite de entrega
   </div>
-  <div class="field">
-    <%= f.label :hasComment %><br />
-    <%= f.number_field :hasComment %>
+  
+  <div class="line-bar">
+    <%= f.check_box :hasComment %> Comentário obrigatório
   </div>
-  <div class="field">
-    <%= f.label :hasArchives %><br />
-    <%= f.number_field :hasArchives %>
+  
+  <div class="line-bar">
+    <%= f.check_box :hasArchives %> Anexar arquivo obrigatório
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div> 

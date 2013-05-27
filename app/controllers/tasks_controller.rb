@@ -13,45 +13,82 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def pending
-     @tasks = Task.all_pending(session[:space_id])
-
-    respond_to do |format|
-      format.html # pending.html.erb
-      format.json { render json: @tasks }
-    end
-
+    if session[:user_student]
+      
+      @tasks = Task.all_pending(session[:space_id], session[:user_id])
+      respond_to do |format|
+        format.html # listStudent.html.erb
+        format.json { render json: @tasks }
+      end
+ 
+    elsif !session[:user_student]
+ 
+      @tasks = Task.all_pending(session[:space_id], session[:user_id])
+      respond_to do |format|
+        format.html # listTeacher.html.erb
+        format.json { render json: @tasks }
+      end 
+ 
+    else
+      redirect_to '/error'
+    end   
+     
   end
   
     # GET /tasks
   # GET /tasks.json
-  def open
-      logger.info("AT: TASKS OPEN") # TODO  apagar teste
-     @tasks = Task.all_open(session[:space_id])
-
-    respond_to do |format|
-      format.html # pending.html.erb
-      format.json { render json: @tasks }
-    end
-
+  def open  
+    if session[:user_student]
+      
+      @tasks = Task.all_open(session[:space_id])
+      respond_to do |format|
+        format.html # listStudent.html.erb
+        format.json { render json: @tasks }
+      end
+ 
+    elsif !session[:user_student]
+ 
+      @tasks = Task.all_open(session[:space_id])
+      respond_to do |format|
+        format.html # listTeacher.html.erb
+        format.json { render json: @tasks }
+      end 
+ 
+    else
+      redirect_to '/error'
+    end   
+ 
   end
   
     # GET /tasks
   # GET /tasks.json
   def close
-      logger.info("AT: TASKS CLOSE") # TODO  apagar teste
-     @tasks = Task.all_close(session[:space_id])
-
-    respond_to do |format|
-      format.html # pending.html.erb
-      format.json { render json: @tasks }
-    end
-
+      if session[:user_student]
+      
+      @tasks = Task.all_close(session[:space_id])
+      respond_to do |format|
+        format.html # listStudent.html.erb
+        format.json { render json: @tasks }
+      end
+ 
+    elsif !session[:user_student]
+ 
+      @tasks = Task.all_close(session[:space_id])
+      respond_to do |format|
+        format.html # listTeacher.html.erb
+        format.json { render json: @tasks }
+      end 
+ 
+    else
+      redirect_to '/error'
+    end   
+     
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    logger.info("AT: TASKS SHOW") # TODO  apagar teste
+    logger.info("TASKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK SHOW") # TODO  apagar teste
     @task = Task.find(params[:id])
 
     respond_to do |format|
@@ -85,10 +122,11 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to @task, notice: 'Atividade criada com sucesso!' }
+        #format.html { render action: "pending" }
         format.json { render json: @task, status: :created, location: @task }
       else
-        format.html { render action: "new" }
+        format.html { render action: "create" }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end

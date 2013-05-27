@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221042410) do
+ActiveRecord::Schema.define(:version => 20130430090600) do
 
   create_table "archives", :force => true do |t|
     t.string   "name"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20130221042410) do
   end
 
   add_index "submissions", ["task_id"], :name => "index_submissions_on_task_id"
-  add_index "submissions", ["user_id"], :name => "index_submissions_on_user_id"
 
   create_table "tasks", :force => true do |t|
     t.string   "title"

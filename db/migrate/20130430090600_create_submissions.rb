@@ -1,5 +1,5 @@
 class CreateSubmissions < ActiveRecord::Migration
-  def change
+  def up
     create_table :submissions do |t|
       t.string :comment
       t.decimal :grade
@@ -8,11 +8,15 @@ class CreateSubmissions < ActiveRecord::Migration
       t.boolean :submitted
       t.boolean :viewed
       t.references :task
-      t.references :user
+      t.integer :user_id
 
       t.timestamps
     end
     add_index :submissions, :task_id
-    add_index :submissions, :user_id
   end
+  
+   def down
+    drop_table :submissions
+  end
+  
 end
