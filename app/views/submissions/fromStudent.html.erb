@@ -1,0 +1,64 @@
+<% content_for :head do %>
+	<div class="gradient-bar line-bar center-text relative">
+		<span class="title">Entregas de: <%= @user.name%></span>
+		<div class="absolute second-title left">
+			<img src="<%= @user.pic %>"/>
+		</div>
+	</div>
+	
+	<div class="line-bar">
+		<%= link_to_function "< Voltar", "history.back()"  %>
+	</div>
+	<div class="clear"></div>
+<% end %>
+
+<ul class="list-submissions">
+	<% @odd = false %>
+	<% @submissions.each do |submission| %>
+	
+		<% if @odd then %>			
+		<li class="odd">
+		<% else %>
+		<li class="even">
+		<% end %>	
+			
+			<a class="title submission_title cursor"><%= submission.task.title %> <img src="../../assets/down.png" width="10" height="10"/></a>
+			<div class="submission_content">
+				<div class="line-bar second-title">
+					<img src="../../assets/calendar.png" width="17" height="17"/>
+					Entrege em <%= submission.updated_at %>
+					<span class="right-float ">
+						<% if submission.task.status then %>
+							Atividade aberta
+						<% else %>	
+							Atividade fechada
+						<% end %>
+					</span>
+				</div>
+				<div class="line-bar">
+					<%= submission.comment %>
+				</div>
+				<div class="line-bar">
+					<span class="second-title"><%= submission.archivetxt %></span>
+				</div>
+			</div>
+	
+		</li>
+	
+	   	<% @odd = !@odd %>
+	<% end %>
+	
+	
+</ul>
+
+<br />
+<script type="text/javascript">
+jQuery(document).ready(function() {
+  jQuery(".submission_content").hide();
+  //toggle the componenet with class msg_body
+  jQuery(".submission_title").click(function()
+  {
+    jQuery(this).next(".submission_content").slideToggle(500);
+  });
+});
+</script>

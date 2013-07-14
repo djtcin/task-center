@@ -5,7 +5,7 @@ class SessionController < ApplicationController
     logger.info("INICIO : "+ params[:redu_user_id]) # TODO  apagar teste
     
     # TODO  fazer auth_hash funcionar para saber o tipo de usuário  
-    auth_hash_temp = { :redu_id  => params[:redu_user_id].to_i, :credentials => { :token => "token"} , :info => { :name => "Denise_#{params[:redu_user_id]}", :login => "djtcin", :email => "d@d" , :pic => "", :student => false } }
+    auth_hash_temp = { :redu_id  => params[:redu_user_id].to_i, :credentials => { :token => "token"} , :info => { :name => "Denise_#{params[:redu_user_id]}", :login => "djtcin", :email => "d@d" , :pic => "", :student => false, :space_id => params[:redu_space_id] } }
     auth_hash_space = { :redu_id  => params[:redu_space_id]}
     # TODO  ou fazer isso funcionar para saber o tipo de usuário 
     #logger.info("AUTH: "+auth_hash)
@@ -19,7 +19,7 @@ class SessionController < ApplicationController
     #session[:me] = conn.get("me")
     #logger.info("ME: "+session[:me])
 
-    @user = User.find_by_redu_id(auth_hash_temp[:redu_id]) ||
+    @user = User.find_user(auth_hash_temp[:redu_id], session[:space_id] ) ||
             User.create_with_omniauth(auth_hash_temp)  # TODO substituir pelo auth certo
             
     @space = Space.find_by_redu_id(auth_hash_space[:redu_id]) || 
@@ -32,7 +32,11 @@ class SessionController < ApplicationController
     logger.info("SPACE ID: #{session[:space_id]}") # TODO apagar teste
     
     
-    redirect_to '/pending'
+    if session[:user_student]
+      redirect_to '/pending'
+    else
+      redirect_to '/students'
+    end
     #redirect_to root_path    
     #redirect_to :controller => "tasks", :action => "pending"
     #redirect_to :controller => "tasks", :action => "pending"

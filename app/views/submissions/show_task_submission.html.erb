@@ -1,4 +1,3 @@
-<span class="debug-span">submissions/show.html.erb</span>
 <% content_for :head do %>
  	<div class="gradient-bar line-bar center-text relative">
 	
@@ -14,15 +13,13 @@
 	</div>
 	
 	<div class="line-bar">
-		<%= link_to_function "< Voltar", "history.back()", :class => 'cssgradients button-default' %> 
-		<img src="../../images/calendar.png" width="17" height="17"/>
-		Até <% @task.date %>
+		<%= link_to_function "< Voltar", "history.back()" %> 
 		
 		<span class="second-title right-align">
 			<% if (@task.public == false)%>
 				Não Público
 			<% else %>
-				<a><img src="alunos.png" width="17" height="17"/> Ver entregas dos alunos ></a>
+				<a href="<%= task_submissions_url(:id => @task.id) %>" ><img src="../../assets/alunos.png" width="17" height="17"/> Ver entregas dos alunos ></a>
 			<% end %>
 		</span>
 	</div>
@@ -34,7 +31,7 @@
 	Especificac&atilde;o:
 	</div>
 	<div class="line-bar">
-	<% @task.description %>
+	<%= @task.description %>
 	</div>
 	
 	<% if (!@submission.empty? && @submission[0].submitted) %>
@@ -49,17 +46,9 @@
 		Arquivos:
 		</div>
 		<div class="line-bar">
-		
-			<ul class="files-list">
-				<li><a>exercicio1.doc</a><a class="right-float"><img src="trash.png" width="17" height="17"/></a><span class="right-float">10 KB </span></li>
-				<li><a>exercicio1.doc</a><a class="right-float"><img src="trash.png" width="17" height="17"/></a><span class="right-float">10 KB </span></li>
-			</ul>
-			
-			<div class="line-bar">
-			<a><img src="upload.png" width="17" height="17"/> Download</a>
-			</div>
+		<%= @submission[0].archivetxt %>
 		</div>
-	<% else %>
+	<% end %>
 	
 	
 	

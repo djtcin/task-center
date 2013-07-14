@@ -1,0 +1,18 @@
+
+[CIDADES VISITAR]
+- Ushuaia -
+- Provincia Santa cruz -
+
+[HOTEIS]
+
+[PASSEIOS]
+- Provincia Santa cruz -
+	- Parque dos Glaciais
+	
+- Ushuaia -
+	- Canal de Beagle
+	
+	
+[TRANSLADOS]
+
+ 

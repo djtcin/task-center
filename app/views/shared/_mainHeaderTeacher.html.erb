@@ -1,8 +1,36 @@
-<span class="debug-span">shared/_mainHeaderTeacher.html.erb</span>
 <div style="height: 40px; width: 100%">
-	<input type="button" value="Alunos" style="float: left;"/>
-	<%= button_to 'Novo', 'new', {:style => "float: left;" } %>
-	<input type="button" value="Abertos" style="float: left;"/>
-	<input type="button" value="Fechados" style="float: left;"/>
-	<input type="button" value="Configuração" style="float: right;"/>
+	<div  class="left-col">
+		<img src="../../assets/alunos.png" width="20" height="20" class="img-header-teacher"/>
+		
+		<% if selected == "students"%>
+			<input type="button" class="cssgradients button-default active" value="Alunos">
+		<% else %>
+			<a href="<%= students_url() %>" class="cssgradients button-default">Alunos</a>
+		<% end %>
+	
+	</div>
+	
+	<div class="center-col">
+		<div style="margin: 0 auto; width: 200px;">
+			<img src="../../assets/list_tasks.png" width="20" height="20" class="img-header-teacher"/>
+			
+			<% if selected == "open"%>
+				<input type="button" value="Abertas" class="cssgradients button-default margin-right active"/>
+			<% else %>
+				<a href="<%= opened_tasks_url() %>" class="cssgradients button-default margin-right">Abertas</a>
+			<% end %>
+		
+			<% if selected == "close"%>
+				<input type="button" value="Fechadas" class="cssgradients button-default margin-right active" />
+			<% else %>
+				<a href="<%= closed_tasks_url() %>" class="cssgradients button-default margin-right">Fechadas</a>
+			<% end %>
+			
+		</div>
+	</div>
+	
+	<div class="right-col">
+		<img src="../../assets/new_task.png" width="20" height="20" class="img-header-teacher margin-right " />
+		<%= link_to 'Criar nova atividade', 'new', {:class => 'cssgradients button-default' } %>
+	</div>
 </div>

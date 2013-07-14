@@ -88,7 +88,6 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    logger.info("TASKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK SHOW") # TODO  apagar teste
     @task = Task.find(params[:id])
 
     respond_to do |format|
@@ -127,6 +126,22 @@ class TasksController < ApplicationController
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "create" }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  # PUT /tasks/1/edit
+  # PUT /tasks/1/edit.json
+  def edit
+    @task = Task.find(params[:id])
+
+    respond_to do |format|
+      if @task.update_attributes(params[:task])
+        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end

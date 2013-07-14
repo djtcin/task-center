@@ -10,11 +10,8 @@ class SubmissionsController < ApplicationController
        @submission = Submission.create_blank(auth_sub)
    end
    
-   if(!@submission) then
-      @submission  =  Submission.create_blank(auth_sub)
-   end
-   
-    @task = Task.find(params[:id]); 
+    @task = Task.find(params[:id]);
+    #@task = Task.find(:all, :conditions => {:id => params[:id]});  
     
     respond_to do |format|
       format.html # submit.html.erb
@@ -23,6 +20,63 @@ class SubmissionsController < ApplicationController
     end
   end
   
+
+  # GET /fromStudent/1
+  # GET /fromStudent.json
+  def fromStudent
+    @submissions = Submission.all_from_user(params[:id], session[:space_id])
+    @user = User.find_user(params[:id], session[:space_id] )
+    
+    respond_to do |format|
+      format.html # fromStudent.html.erb
+      #format.json { render json: @submissions }
+      format.json { render :json => { :submissions => @submissions, :user => @user } }
+    end
+  end
+
+  # GET /fromTask/1
+  # GET /fromTask.json
+  def fromTask
+    @submissions = Submission.all_from_task(params[:id])
+    @task = Task.find(params[:id])
+    
+    @submissions.each do |sub|
+      #logger.info("\n\n\n\n\nNSUBMISSIONS : "+ sub.user_id) # TODO  apagar teste
+      sub.user = User.find_user(sub.user_id, session[:space_id] )
+    end
+    
+    respond_to do |format|
+      format.html # fromTask.html.erb
+      format.json { render :json => { :submissions => @submissions, :task => @task } }
+    end
+  end
+  
+  # GET /students
+  # GET /students.json
+  def students
+    
+    @user = User.find(:all, :conditions => {:student => true, :space_id => session[:space_id]})
+    
+    @user.each do |sub|
+      sub.newsubmissions =        
+        Submission
+        .joins("JOIN tasks ON tasks.id = submissions.task_id")
+        .where("
+              submissions.user_id = ? AND
+              tasks.space_id = ? AND
+              submissions.viewed = ? AND
+              submissions.submitted = ?
+              ", sub.redu_id, session[:space_id], false, true
+        ).count
+
+        #logger.info("\n\n\n\n: #{sub.newsubmissions} \n\n\n") # TODO apagar teste
+    end
+       
+    respond_to do |format|
+      format.html # students.html.erb
+      format.json { render json: @user }
+    end
+  end
   
   # GET /submissions
   # GET /submissions.json
@@ -45,7 +99,21 @@ class SubmissionsController < ApplicationController
       format.json { render json: @submission }
     end
   end
-
+  
+  def show_task_submission
+      @submission = Submission.find(:all, :conditions => {:user_id => session[:user_id], :task_id => params[:id]})
+      @task = Task.find(params[:id]); 
+    
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render :json => { :submission => @submission, :task => @task } }
+        #{ render json: @submission }
+      end
+      
+      
+  end
+  
+  
   # GET /submissions/new
   # GET /submissions/new.json
   def new
@@ -82,9 +150,9 @@ class SubmissionsController < ApplicationController
   # PUT /submissions/1.json
   def update
     @submission = Submission.find(params[:id])
-
+    params[:submission][:submitted] = true;    
     respond_to do |format|
-      if @submission.update_attributes(params[:submission])
+      if @submission.update_attributes(params[:submission]) 
         format.html { redirect_to opened_tasks_url }
         format.json { head :no_content }
       else

@@ -11,15 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430090600) do
+ActiveRecord::Schema.define(:version => 20130629222300) do
 
   create_table "archives", :force => true do |t|
     t.string   "name"
     t.string   "format"
     t.integer  "size"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "submission_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
+
+  add_index "archives", ["submission_id"], :name => "index_archives_on_submission_id"
 
   create_table "spaces", :primary_key => "redu_id", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -37,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130430090600) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "archivetxt"
   end
 
   add_index "submissions", ["task_id"], :name => "index_submissions_on_task_id"
@@ -57,7 +61,8 @@ ActiveRecord::Schema.define(:version => 20130430090600) do
 
   add_index "tasks", ["space_id"], :name => "index_tasks_on_space_id"
 
-  create_table "users", :primary_key => "redu_id", :force => true do |t|
+  create_table "users", :force => true do |t|
+    t.integer  "redu_id"
     t.string   "name"
     t.string   "email"
     t.string   "login"
@@ -70,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20130430090600) do
     t.boolean  "emailNewGrade"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "space_id"
   end
 
 end

@@ -70,6 +70,10 @@ li{
 	left: 190px;
 }
 
+.margin-right{
+	margin-right: 5px;
+}
+
 .header-center-buttons a{
 	margin-left: 5px;
 }
@@ -166,6 +170,14 @@ div.task-label.close{
 	text-align: center;
 }
 
+.empty-tasks{
+	padding: 100px 0px;
+}
+
+.empty-tasks{
+	text-align: center;
+}
+
 .title{
 	color: #158ac4;
 	font-weight: bold;
@@ -173,6 +185,25 @@ div.task-label.close{
 
 .second-title{
 	color: #b3b3b3;
+}
+
+.left-col {
+    float: left;
+    width: 170px;
+}
+
+.center-col {
+    float: left;
+    width: 370px;
+}
+
+.right-col{
+    float: left;
+    width: 170px;
+}
+
+.img-header-teacher{
+	margin-right: 5px;
 }
 
 #headTaskBar .second-title.right{
@@ -238,6 +269,14 @@ div.task-label.close{
 	float: left;
 }
 
+.small-col{
+	width: 31px;
+}
+
+.top-col{
+	vertical-align: top;
+}
+
 .list-submissions .right-col{
 	display: block;
 	margin-left: 50px;
@@ -298,8 +337,9 @@ input[type="text"].small{
 .campos-data select{
 	width: 70px;
 }
-	.campos-data #task_date_1i{ width: 80px; }
-	.campos-data #task_date_2i{ width: 120px; }
+
+.campos-data #task_date_1i{ width: 80px; }
+.campos-data #task_date_2i{ width: 120px; }
 
 .debug-span{
 	color: #00f;

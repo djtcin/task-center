@@ -1,9 +1,17 @@
-<span class="debug-span">tasks/open.html.erb</span>
 <% content_for :head do %>
-  <%= render :partial => "shared/mainHeaderStudent", :locals => { :selected => "open" } %>
+	<% if(session[:user_student] == true) %>
+		<%= render :partial => "shared/mainHeaderStudent", :locals => { :selected => "open"} %>
+	<% else %>
+		<%= render :partial => "shared/mainHeaderTeacher", :locals => { :selected => "open"} %>
+	<% end %>
 <% end %>
 <% @status = :open %>
-<%= render 'listStudent' %>
+
+<% if(session[:user_student] == true) %>
+  	<%= render 'listStudent' %>
+  <% else %>
+  	<%= render 'listTeacher' %>
+<% end %>
 
 <% content_for :buttons do %>
 <br>

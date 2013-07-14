@@ -1,23 +1,20 @@
-<span class="debug-span">shared/_mainHeaderStudent.html.erb</span>
 <div style="height: 40px; width: 100%">
 	<% if selected == "pending"%>
-		<span style="float: left;">Pendentes</span>
+		<input type="button" class="cssgradients button-default left-float active margin-right" value="Pendentes">
 	<% else %>
-		<%= button_to 'Pendenter', 'pending', {:style => "float: left;" } %>
+		<%= button_to 'Pendentes', 'pending', {:class => 'left-float cssgradients button-default margin-right'} %>
 	<% end %>
 	
 	<% if selected == "open"%>
-		<span style="float: left;">Abertos</span>
+		<input type="button" class="cssgradients button-default left-float margin-right active" value="Abertas">
 	<% else %>
-		<%= button_to 'Abertos', 'open', {:style => "float: left;" } %>
+		<%= button_to 'Abertas', 'open', {:class => 'left-float cssgradients button-default margin-right' } %>
 	<% end %>
 	
 	<% if selected == "close"%>
-		<span style="float: left;">Fechados</span>
+		<input type="button" class="cssgradients button-default left-float margin-right active" value="Fechadas">
 	<% else %>
-		<%= button_to 'Fechados', 'close', {:style => "float: left;" } %>
+		<%= button_to 'Fechadas', 'close', {:class => 'left-float cssgradients button-default margin-right' } %>
 	<% end %>
 	
-	
-	<input type="button" value="Configuração" style="float: right;"/>
 </div>

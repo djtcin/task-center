@@ -1,0 +1,65 @@
+
+<%= form.fields_for :archives, :remote => true do |archive_form| %>
+    <%= archive_form.text_field :name %>
+    <%= archive_form.text_field :format %>
+	<%= archive_form.hidden_field :id %>
+
+ <% =begin <% unless archive_form.object.nil? || archive_form.object.new_record? %>
+    <div class="field">
+      <%= archive_form.label :_destroy, 'Remove:' %>
+      <%= archive_form.check_box :_destroy %>
+    </div>
+  <% end %> =end %>
+  
+   <% unless archive_form.object.new_record? %>
+        <%= archive_form.hidden_field :_destroy %>
+        <%= link_to_function "Remove", "removeItemField(this)" %>
+    <% else %>
+        <%= link_to_function "Remove", "removeGeneratedItemField(this)" %>
+    <% end %>
+  
+  
+<% end %>
+
+<%
+=begin
+<%= form.fields_for :archives do |archive_form| %>
+  <div class="field">
+    Nome:
+    <%= archive_form.text_field :name %>
+  </div>
+  <div class="field">
+    Link
+    <%= archive_form.text_field :format %>
+  </div>
+  <% unless archive_form.object.nil? || archive_form.object.new_record? %>
+    <div class="field">
+      <%= archive_form.label :_destroy, 'Remove:' %>
+      <%= archive_form.check_box :_destroy %>
+    </div>
+  <% end %>
+  
+  
+  <%= archive_form.submit 'Gravar arquivo', :class => 'cssgradients button-default' %>
+<% end %>
+=end
+%>
+
+<%
+=begin
+%>
+<%= f.fields_for :items, :remote => true do |item| %>
+        <%= item.text_field :name %>
+        <%= item.textarea :description %>
+        <%= item.hidden_field :id %>
+
+        <% unless item.object.new_record? %>
+            <%= item.hidden_field :_destroy %>
+            <%= link_to_function "Remove", "removeItemField(this)" %>
+        <% else %>
+            <%= link_to_function "Remove", "removeGeneratedItemField(this)" %>
+        <% end %>
+    <% end %>
+<%
+=end
+%>

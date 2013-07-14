@@ -1,0 +1,28 @@
+<% content_for :head do %>
+ 	<div class="gradient-bar line-bar center-text relative">
+		<span class="title">Entregas de: <%= @task.title %></span>
+	</div>
+	<div class="line-bar">
+		<%= link_to_function "< Voltar", "history.back()"  %> 
+	</div>
+	<div class="clear"></div>
+<% end %>
+
+
+<table>
+
+<% @submissions.each do |submission| %>
+  <tr>
+    <td class="top-col small-col"><img src="<%= submission.user.pic %>"></td>
+    <td>
+    	<span class="title"><%= submission.user.name %></span>
+		<br><br>
+    	<%= submission.comment %>
+    	<br><br>
+		<span class="second-title"><%= submission.archivetxt %></span>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />

@@ -1,46 +1,28 @@
-<span class="debug-span">tasks/show.html.erb</span>
-<p id="notice"><%= notice %></p>
+<% content_for :head do %>
+	<%= render :partial => "shared/mainHeaderTeacher", :locals => { :selected => ""} %>
+	<br />
+ 	<div class="gradient-bar line-bar center-text relative">
+		<span class="title"><%= @task.title %></span>
+	</div>
+	
+	<div class="line-bar">
+		<img src="../../assets/calendar.png" width="17" height="17"/>
+		Até <%= @task.date %>
+		
+		<span class="second-title right-align">
+			<a href="<%= task_edit_url(:id => @task.id) %>"><img src="../../assets/task_edit.png" width="17" height="17"/> Editar </a>
+			<a href="<%= task_submissions_url(:id => @task.id) %>"><img src="../../assets/alunos.png" width="17" height="17"/> Ver entregas dos alunos ></a>
+		</span>
+	</div>
+	<div class="clear"></div>
 
-<p>
-  <b>Title:</b>
-  <%= @task.title %>
-</p>
+<% end %>
+<div class="line-bar title">
+Especificac&atilde;o:
+</div>
+<div class="line-bar">
+<%= @task.description %>
+</div>
+<br />
+<span id="versionTaskCenter">TC 1.0 Professor</span>
 
-<p>
-  <b>Description:</b>
-  <%= @task.description %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @task.date %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @task.status %>
-</p>
-
-<p>
-  <b>Public:</b>
-  <%= @task.public %>
-</p>
-
-<p>
-  <b>Autolock:</b>
-  <%= @task.autolock %>
-</p>
-
-<p>
-  <b>Hascomment:</b>
-  <%= @task.hasComment %>
-</p>
-
-<p>
-  <b>Hasarchives:</b>
-  <%= @task.hasArchives %>
-</p>
-
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>

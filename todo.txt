@@ -1,10 +1,11 @@
 
 TODO
 - fazer imagens pegar
-- fazer a lista e tasks no close trazer os submissions
+- fazer validação ao submeter
+- destacar os campos obrigatórios de submeter
 
 
-
+parei: fazer aquivos funcionar pra submission
 
 
 

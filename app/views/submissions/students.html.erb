@@ -1,0 +1,61 @@
+<% if(session[:user_student] == true) %>
+	<% redirect_to '/pending' %>
+<% else %>
+
+	<% content_for :head do %>
+  		<%= render :partial => "shared/mainHeaderTeacher", :locals => { :selected => "students"} %>
+	<% end %>
+	
+	<%
+		@odd = true
+		@count = 4
+	%>
+	
+	<div id="container" class="line-bar">
+		<ul class="list-students">
+			
+			<%  @user.each do |sub| %>
+				
+				<% if @odd then %>			
+				<li class="odd">
+				<% else %>
+				<li class="even">
+				<% end %>	
+					<a href="<%= student_submissions_url(:id => sub.redu_id) %>">
+						<img src="<%= sub.pic %>"/> <%= sub.name %>
+						<% if sub.newsubmissions > 0 %>	
+							<div class="count-task"><%= sub.newsubmissions %></div>
+						<% end %>
+					</a>
+				</li>
+				
+				<%
+					@count = @count -1
+					if @count == 0 then 
+				%>
+						<hr class="separator">
+				<%		@count = 4
+						@odd = !@odd
+					end
+				%>
+				
+			<% end %>
+			
+		</ul>
+
+		<br />
+
+		
+		
+	</div>
+				
+	
+	<% content_for :buttons do %>
+	<br>
+	<% end %>
+
+<% end %>
+
+  	
+  	
+  	

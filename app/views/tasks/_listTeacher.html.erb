@@ -1,19 +1,30 @@
-<span class="debug-span">tasks/_listTeacher.html.erb</span>
-<table id="table-tasks" class="table-with-check-list">
-  <tr>
-    <th class="mini-col"></th>
-	<th>Atividade</th>
-	<th>Entregas</th>
-	<th class="small-col">Data</th>
-  </tr>
-<% @tasks.each do |task| %>
-  <tr onclick="location.href='<%= task_url(:id => task.id) %>'">
-  	<td class="mini-col"><div class="task-label close"></div></td>
-	<td><%= task.title %></td>
-	<td><%= task.title %></td>
-	<td class="small-col"><%= task.date %></td>
-   </tr>
+<% if( @tasks.empty? ) %>
+	<div class="empty-tasks">
+		<span class="second-title">Sem atividades</span>
+	</div>
+<% else %>
+	<table id="table-tasks" class="table-with-check-list">
+	  <tr>
+	    <th class="mini-col"></th>
+		<th>Atividade</th>
+		<th>Entregas</th>
+		<th class="small-col">Data</th>
+	  </tr>
+		<% @tasks.each do |task| %>
+		  <tr onclick="location.href='<%= task_url(:id => task.id) %>'">
+		  	
+		  	<% if( @status == :close) %>
+		  		<td class="mini-col"><div class="task-label close"></div></td>
+		  	<% elsif(@status == :open) %>
+		  		<td class="mini-col"><div class="task-label open"></div></td>
+		  	<% end %>
+		  	
+			<td><%= task.title %></td>
+			<td><%= task.title %></td>
+			<td class="small-col"><%= task.date %></td>
+		   </tr>
+		<% end %>
+	</table>
 <% end %>
-</table>
 
 <br />

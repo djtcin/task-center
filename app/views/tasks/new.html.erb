@@ -1,7 +1,9 @@
-<span class="debug-span">tasks/new.html.erb</span>
 <br /><% content_for :head do %>
 	<div class="gradient-bar line-bar center-text relative">
 		<span class="title">Criar nova atividade</span>
+	</div>
+	<div class="line-bar">
+		<%= link_to_function "< Cancelar", "history.back()"  %>
 	</div>
 	<div class="clear"></div>
 <% end %>
