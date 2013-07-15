@@ -21,9 +21,9 @@
 	  	  	
 	  	<% if( @status == :close) %>
 	  		<td class="mini-col"><div class="task-label close"></div></td>
-	  	<% elsif(@status == :open) %>
+	  	<% elsif(@status == :open && task.submited) %>
 	  		<td class="mini-col"><div class="task-label open"></div></td>
-	  	<% elsif(@status == :pendding) %>
+	  	<% elsif(@status == :pendding || (@status == :open  && !task.submited)) %>
 	  		<td class="mini-col"><div class="task-label pendding"></div></td>
 	  	<% end %>
 	  	

@@ -14,7 +14,16 @@
 		<div id="headTaskBar" class="line-bar"><%= yield :head %></div>
 		<div id="container" class="line-bar"><%= yield %></div>
 		<div id="buttonsBar line-bar"><%= yield :buttons %></div>
-		<span id="versionTaskCenter"><%= yield :version %></span>
+		
+		<div class="clear"></div>
+		<br/>
+		<span id="versionTaskCenter" class="second-title right-align">
+			<% if(session[:user_student] == true) %>
+				TC 1.0 Aluno
+			<% else %>
+				TC 1.0 Professor
+			<% end %>
+		</span>
 	</div>
 	
 </body>

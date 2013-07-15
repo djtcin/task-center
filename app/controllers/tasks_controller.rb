@@ -41,11 +41,21 @@ class TasksController < ApplicationController
     if session[:user_student]
       
       @tasks = Task.all_open(session[:space_id])
+      
+      @tasks.each do |tsk|
+        @submission = Submission.find(:all, :conditions => {:task_id => tsk.id, :user_id => session[:user_id]})
+        if @submission.empty? || !@submission[0].submitted then
+          tsk.submited = false
+        else
+          tsk.submited = true
+        end
+      end
+      
       respond_to do |format|
         format.html # listStudent.html.erb
         format.json { render json: @tasks }
       end
- 
+      
     elsif !session[:user_student]
  
       @tasks = Task.all_open(session[:space_id])

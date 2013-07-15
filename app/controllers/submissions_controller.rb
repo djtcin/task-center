@@ -41,7 +41,6 @@ class SubmissionsController < ApplicationController
     @task = Task.find(params[:id])
     
     @submissions.each do |sub|
-      #logger.info("\n\n\n\n\nNSUBMISSIONS : "+ sub.user_id) # TODO  apagar teste
       sub.user = User.find_user(sub.user_id, session[:space_id] )
     end
     
